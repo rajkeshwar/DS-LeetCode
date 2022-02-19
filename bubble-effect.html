@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title of the document</title>
+</head>
+
+
+<style type="text/css">
+  .ripBox {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    background: #040d15;
+  }
+
+  .ripBox a {
+    position: relative;
+    display: inline-block;
+    padding: 12px 40px;
+    margin: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #0162c8, #55e7fc);
+    width: 100%;
+    height: 500px;
+  }
+
+  .bxx {
+    position: relative;
+    display: inline-block;
+    padding: 12px 40px;
+    margin: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #0162c8, #55e7fc);
+    width: 100%;
+    height: 500px;
+  }
+
+  .ripBox a:nth-child(2) {
+    background: linear-gradient(90deg, #755bea, #ff72c0);
+
+  }
+
+  .ripBox a span {
+    position: absolute;
+    background: #fff;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: animate 1s linear infinite;
+  }
+
+  .ripBox span {
+    position: absolute;
+    background: #fff;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-radius: 50%;
+
+    animation: animate 1s linear infinite;
+  }
+
+
+  @keyframes animate {
+    0% {
+      width: 0px;
+      height: 0px;
+      opacity: 0.5;
+    }
+
+    100% {
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+    }
+  }
+</style>
+
+<body>
+
+
+  <div class="ripBox">
+    <div class="bxx"> </div>
+  </div>
+
+  <script>
+    document
+      .querySelectorAll('.bxx')
+      .forEach(button => {
+        button.addEventListener('click', bubbleEffect)
+        button.addEventListener('mousemove', bubbleEffect)
+      })
+
+    function bubbleEffect(e) {
+
+      let x = e.clientX - e.target.offsetLeft;
+      let y = e.clientY - e.target.offsetTop;
+
+      let ripples = document.createElement('span');
+
+      ripples.style.left = x + 'px';
+      ripples.style.top = y + 'px';
+
+      this.appendChild(ripples);
+
+      setTimeout(() => ripples.remove(), 1000);
+
+    }
+  </script>
+
+</body>
+
+
+
+
+</html>

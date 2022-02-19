@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .box {
+      width: 500px;
+      height: 200px;
+      border: 1px solid red;
+      font-size: 32px;
+      margin: 0 auto;
+    }
+
+    .typewriter h1 {
+      overflow: hidden; /* Ensures the content is not revealed until the animation */
+      border-right: .15em solid orange; /* The typwriter cursor */
+      white-space: nowrap; /* Keeps the content on a single line */
+      margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+      letter-spacing: .15em; /* Adjust as needed */
+      animation: 
+        typing 6.5s steps(40, end) infinite,
+        blink-caret .75s step-end infinite;
+    }
+
+    /* The typing effect */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    /* The typewriter cursor effect */
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: orange; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box"></div>
+
+    <!-- <div class="typewriter">
+      <h1>The cat and the hat.</h1>
+    </div> -->
+  </div>
+
+  
+  
+  <script>
+    let counter = 0;
+    const heading = "My name is Ranjan Kumar";
+    const box = document.querySelector('.box');
+
+    function animate() {
+      if (counter < heading.length) {
+        box.textContent += heading.charAt(counter++);
+        setTimeout(animate, 300);
+      } else {
+        counter = 0;
+        box.textContent = '';
+        setTimeout(animate, 300);
+      }
+    }
+    animate()
+  </script>
+
+</body>
+
+</html>
