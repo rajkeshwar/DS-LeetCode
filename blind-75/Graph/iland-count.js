@@ -1,0 +1,31 @@
+var numIslands = function (grid) {
+  const ROWS = grid.length;
+  const COLS = grid[0].length;
+
+  function dfs(r, c) {
+    if (r < 0 || r === ROWS || c < 0 || c === COLS) return 0;
+    if (grid[r][c] === '0') return 0;
+
+    grid[r][c] = '0';
+
+
+    dfs(r + 1, c);
+    dfs(r - 1, c);
+    dfs(r, c + 1);
+    dfs(r, c - 1);
+
+    return 1;
+  }
+
+  let count = 0;
+
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (grid[r][c] === '1') {
+        count += dfs(r, c);
+      }
+    }
+  }
+
+  return count;
+};

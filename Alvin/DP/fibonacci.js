@@ -9,7 +9,27 @@ function fib(num, memo = {}) {
   return memo[num];
 }
 
-console.log(fib(6));
-console.log(fib(7));
-console.log(fib(8));
-console.log(fib(50));
+function fibTabulation(num) {
+  const table = Array(num + 1).fill(0);
+
+  table[1] = 1;
+
+  for (let n = 2; n <= num; n++) {
+    table[n] = table[n - 1] + table[n - 2];
+  }
+
+  return table[num];
+}
+
+
+console.log(fib(6));  // 8
+console.log(fib(7));  // 13
+console.log(fib(8));  // 21
+console.log(fib(50)); // 12586269025
+
+console.log('================ tabulation =============')
+console.log(fibTabulation(6));  // 8
+console.log(fibTabulation(7));  // 13
+console.log(fibTabulation(8));  // 21
+console.log(fibTabulation(50)); // 12586269025
+
