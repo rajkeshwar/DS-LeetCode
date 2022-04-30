@@ -19,4 +19,4 @@ var findMin = function (nums) {
   return res
 };
 
-console.log(findMin([2,1]))
+console.log(findMin([2, 1]))

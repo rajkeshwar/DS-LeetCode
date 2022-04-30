@@ -22,21 +22,22 @@ function buildGraph(edges) {
 
 console.log(buildGraph(input));
 
-var cloneGraph = function (node) {
+var cloneGraph = function(node) {
   return dfs(node);
 };
 
 function dfs(node, memo = {}) {
+  
   if (node === null) return node;
-  if (node.val in memo) return memo[node];
-
+  if (node.val in memo) return memo[node.val];
+  
   const cloneNode = new Node(node.val);
-
-  for (let neighbor of node.neighbors) {
-    cloneNode.neighbors.push(dfs(neighbor, memo))
-  }
-
+  
   memo[node.val] = cloneNode;
-
+  
+  for (let neighbor of node.neighbors) {
+      cloneNode.neighbors.push(dfs(neighbor, memo));
+  }
+ 
   return cloneNode;
 }
