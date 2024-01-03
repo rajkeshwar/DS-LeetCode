@@ -1,10 +1,14 @@
-
 function Node(val, neighbors) {
   this.val = val === undefined ? 0 : val;
   this.neighbors = neighbors === undefined ? [] : neighbors;
-};
+}
 
-const input = [[2, 4], [1, 3], [2, 4], [1, 3]];
+const input = [
+  [2, 4],
+  [1, 3],
+  [2, 4],
+  [1, 3],
+];
 
 function buildGraph(edges) {
   const graph = {};
@@ -22,22 +26,21 @@ function buildGraph(edges) {
 
 console.log(buildGraph(input));
 
-var cloneGraph = function(node) {
+var cloneGraph = function (node) {
   return dfs(node);
 };
 
 function dfs(node, memo = {}) {
-  
   if (node === null) return node;
   if (node.val in memo) return memo[node.val];
-  
+
   const cloneNode = new Node(node.val);
-  
+
   memo[node.val] = cloneNode;
-  
+
   for (let neighbor of node.neighbors) {
-      cloneNode.neighbors.push(dfs(neighbor, memo));
+    cloneNode.neighbors.push(dfs(neighbor, memo));
   }
- 
+
   return cloneNode;
 }
